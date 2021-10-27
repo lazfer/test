@@ -1,0 +1,48 @@
+<div class="mb-3 container-fluid mt-30">
+  <label for="exampleFormControlInput1" class="form-label">Card Number</label>
+  <form [formGroup]="form">
+    <input
+      type="text"
+      class="form-control"
+      id="cardNumber"
+      formControlName="cardNumber"
+      (keypress)="validCardNumber($event)"
+    />
+    <div *ngIf="mns.cardNumber.dirty && mns.cardNumber.errors">
+      <small *ngIf="mns.cardNumber.errors?.required" class="error-mns">
+        El número de tarjeta es requerido
+      </small>
+      <small
+        *ngIf="
+          mns.cardNumber.errors?.minlength && !mns.cardNumber.errors?.maxlength
+        "
+        class="error-mns"
+      >
+        La longitud mínima es de 14 numberos
+      </small>
+      <small
+        *ngIf="
+          mns.cardNumber.errors?.maxlength && !mns.cardNumber.errors?.minlength
+        "
+        class="error-mns"
+      >
+        La longitud máxima es de 16 numberos
+      </small>
+    </div>
+
+    <div class="d-grid gap-2 col-12 mx-auto mt-30">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        [disabled]="!form.valid"
+        (click)="submit()"
+      >
+        CALCULAR NÚMERO DE LA SUERTE {{ form.valid }}
+      </button>
+    </div>
+  </form>
+
+  <div class="text-center mt-30">
+    {{ label }}
+  </div>
+</div>

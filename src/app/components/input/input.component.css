@@ -1,0 +1,13 @@
+.form-label {
+  color: #aaa;
+  margin-top: 20px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.btn-light {
+  background-color: #eee !important;
+}
+.error-mns {
+  color: red;
+}
